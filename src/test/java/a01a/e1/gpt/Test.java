@@ -34,7 +34,7 @@ public class Test {
 
 	@org.junit.Before
 	public void initFactory() {
-		// this.factory = new TimetableFactoryImpl();
+		this.factory = new TimetableFactoryImpl();
 	}
 
 	@org.junit.Test

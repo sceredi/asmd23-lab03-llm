@@ -1,7 +1,6 @@
 package a01a.e1.gpt;
 
-import org.junit.Assert.*;
-import org.junit.Test;
+import static org.junit.Assert.*;
 
 import java.util.*;
 
@@ -9,27 +8,25 @@ public class Test {
 
 	/*
 	 * Implementare l'interfaccia TimetableFactory come indicato nel metodo
-	 * initFactory qui sotto. Realizza una factory per un concetto di tabella
-	 * orari, catturato dall'interfaccia Timetable: essenzialmente è una tabella
-	 * che ad ogni giorno e tipo di attività associa un numero di ore svolte (>=0).
+	 * initFactory qui sotto. Realizza una factory per un concetto di tabella orari,
+	 * catturato dall'interfaccia Timetable: essenzialmente è una tabella che ad
+	 * ogni giorno e tipo di attività associa un numero di ore svolte (>=0).
 	 * 
 	 * Sono considerati opzionali ai fini della possibilità di correggere
 	 * l'esercizio, ma concorrono comunque al raggiungimento della totalità del
 	 * punteggio:
 	 * 
 	 * - implementazione di tutti i metodi della factory (ossia, nella parte
-	 * obbligatoria è sufficiente implementarli tutti tranne uno a piacimento --
-	 * il primo, empty, è obbligatorio)
-	 * - la buona progettazione della soluzione, utilizzando soluzioni progettuali
-	 * che portino a
-	 * codice succinto che evita ripetizioni
+	 * obbligatoria è sufficiente implementarli tutti tranne uno a piacimento -- il
+	 * primo, empty, è obbligatorio) - la buona progettazione della soluzione,
+	 * utilizzando soluzioni progettuali che portino a codice succinto che evita
+	 * ripetizioni
 	 * 
 	 * Si tolga il commento dal metodo initFactory.
 	 * 
-	 * Indicazioni di punteggio:
-	 * - correttezza della parte obbligatoria: 10 punti
-	 * - correttezza della parte opzionale: 3 punti (ulteriore metodo della factory)
-	 * - qualità della soluzione: 4 punti (per buon design)
+	 * Indicazioni di punteggio: - correttezza della parte obbligatoria: 10 punti -
+	 * correttezza della parte opzionale: 3 punti (ulteriore metodo della factory) -
+	 * qualità della soluzione: 4 punti (per buon design)
 	 * 
 	 */
 
@@ -87,15 +84,9 @@ public class Test {
 
 	@org.junit.Test
 	public void testJoin() {
-		Timetable table1 = this.factory.empty()
-				.addHour("act1", "day1")
-				.addHour("act1", "day1")
-				.addHour("act2", "day2");
+		Timetable table1 = this.factory.empty().addHour("act1", "day1").addHour("act1", "day1").addHour("act2", "day2");
 
-		Timetable table2 = this.factory.empty()
-				.addHour("act2", "day1")
-				.addHour("act2", "day2")
-				.addHour("act1", "day3")
+		Timetable table2 = this.factory.empty().addHour("act2", "day1").addHour("act2", "day2").addHour("act1", "day3")
 				.addHour("act3", "day3");
 
 		// unisco le ore di due table diverse: si sommano
@@ -119,17 +110,9 @@ public class Test {
 
 	@org.junit.Test
 	public void testBounds() {
-		Timetable table = this.factory.empty()
-				.addHour("act1", "day1")
-				.addHour("act1", "day1")
-				.addHour("act1", "day1")
-				.addHour("act1", "day2")
-				.addHour("act1", "day3")
-				.addHour("act1", "day3")
-				.addHour("act2", "day1")
-				.addHour("act2", "day1")
-				.addHour("act3", "day2")
-				.addHour("act3", "day3");
+		Timetable table = this.factory.empty().addHour("act1", "day1").addHour("act1", "day1").addHour("act1", "day1")
+				.addHour("act1", "day2").addHour("act1", "day3").addHour("act1", "day3").addHour("act2", "day1")
+				.addHour("act2", "day1").addHour("act3", "day2").addHour("act3", "day3");
 
 		// data una tabella da 10 ore come sopra, le rimuovo tutte
 		table = this.factory.cut(table, (a, d) -> 0);
@@ -137,17 +120,9 @@ public class Test {
 		assertEquals(Set.of("day1", "day2", "day3"), table.days());
 		assertEquals(0, table.sums(Set.of("act1", "act2", "act3"), Set.of("day1", "day2", "day3")));
 
-		table = this.factory.empty()
-				.addHour("act1", "day1")
-				.addHour("act1", "day1")
-				.addHour("act1", "day1")
-				.addHour("act1", "day2")
-				.addHour("act1", "day3")
-				.addHour("act1", "day3")
-				.addHour("act2", "day1")
-				.addHour("act2", "day1")
-				.addHour("act3", "day2")
-				.addHour("act3", "day3");
+		table = this.factory.empty().addHour("act1", "day1").addHour("act1", "day1").addHour("act1", "day1")
+				.addHour("act1", "day2").addHour("act1", "day3").addHour("act1", "day3").addHour("act2", "day1")
+				.addHour("act2", "day1").addHour("act3", "day2").addHour("act3", "day3");
 
 		// data una tabella da 10 ore come sopra, al massimo ne consento 1 al giorno per
 		// attività, diventano 6

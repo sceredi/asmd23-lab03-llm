@@ -1,4 +1,4 @@
-package a01a.e1;
+package a01a.e1.copilot;
 
 import java.util.*;
 

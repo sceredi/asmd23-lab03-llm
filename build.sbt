@@ -9,6 +9,5 @@ lazy val root = project
     libraryDependencies ++= Seq(
       "org.scalameta" %% "munit" % "0.7.29" % Test,
       "com.github.sbt" % "junit-interface" % "0.13.3" % "test",
-      "com.github.sbt" % "junit-interface" % "0.13.3" % "compile"
     )
   )
